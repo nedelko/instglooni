@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="instglooni.MainPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+            <Image Source="icon_camera.png">
+            </Image>
+            <Image Source="icon_instagram.png">
+            </Image>
+            <Image Source="icon_tv.png">
+            </Image>
+            <Image Source="icon_letter.png">
+            </Image>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <StackLayout>
+        <ListView x:Name="profileInfoList" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Vertical">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="7*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+                                    <Image Source="{Binding avatar}"
+                                           Grid.Row="0"
+                                           Grid.Column="0"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           WidthRequest="40"
+                                           HeightRequest="40">
+                                    </Image>
+                                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" Spacing="0">
+                                        <Label Text="{Binding user_name}" FontSize="Small" />
+                                        <Label Text="{Binding full_name}" FontSize="Small" />
+                                    </StackLayout>
+                                    <Image Source="icon_options"
+                                           Grid.Row="0"
+                                           Grid.Column="2"
+                                           HorizontalOptions="FillAndExpand"
+                                           VerticalOptions="FillAndExpand"
+                                           WidthRequest="40"
+                                           HeightRequest="40">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OptionTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <BoxView Color="Black" WidthRequest ="100" HeightRequest="1"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Image Source="icon_home.png"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_HomeTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="icon_search.png"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_SearchTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="icon_add.png"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_AddNewPostTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="icon_like.png"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_ActionsTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="icon_profile.png"
+                   Grid.Row="0"
+                   Grid.Column="4"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="FillAndExpand">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_ProfileTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
