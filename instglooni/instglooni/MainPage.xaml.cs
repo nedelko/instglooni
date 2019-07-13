@@ -51,17 +51,52 @@ namespace instglooni
         {
             string action = await DisplayActionSheet(null, "Cancel", null, "Пожаловаться", "Отменить подписку на хэштег", "Копировать ссылку", "Поделиться", "Не показывать для этого хэштега");
         }
-        /*private async void takePhotoBtnTapped(object sender, EventArgs e)
+
+        private async void TapGestureRecognizer_FlagTapped(object sender, EventArgs e)
         {
-             if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
-                {
-                    MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-                    {
-                        SaveToAlbum = true,
-                        Directory = "Sample",
-                        Name = $"{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.jpg"
-                    });    
-                
-        }}*/
+            Image img = sender as Image;
+            if (img.Source.ToString()== "File: icon_flag")
+            {
+                await img.FadeTo(0, 250);
+                img.Source = "icon_flag_red";
+                await img.FadeTo(1, 250);
+            }
+            else
+            {
+                await img.FadeTo(0, 250);
+                img.Source = "icon_flag";
+                await img.FadeTo(1, 250);
+            }
+            
+        }
+
+        private async void TapGestureRecognizer_LikeTapped(object sender, EventArgs e)
+        {
+            Image img = sender as Image;
+            if (img.Source.ToString() == "File: icon_like")
+            {
+                await img.FadeTo(0, 250);
+                img.Source = "icon_like_red";
+                await img.FadeTo(1, 250);
+            }
+            else
+            {
+                await img.FadeTo(0, 250);
+                img.Source = "icon_like";
+                await img.FadeTo(1, 250);
+            }
+        }
+        /*private async void takePhotoBtnTapped(object sender, EventArgs e)
+{
+if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
+{
+  MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+  {
+      SaveToAlbum = true,
+      Directory = "Sample",
+      Name = $"{DateTime.Now.ToString("dd.MM.yyyy_hh.mm.ss")}.jpg"
+  });    
+
+}}*/
     }
 }

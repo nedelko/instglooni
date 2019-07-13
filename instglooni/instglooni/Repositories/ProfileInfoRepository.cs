@@ -25,6 +25,9 @@ namespace instglooni.Repositories
             public string user_name { get; set; }
             public string full_name { get; set; }
             public string avatar { get; set; }
+            public int commentsCount { get; set; }
+            public int likesCount { get; set; }
+
         }
         public List<ProfileInfo> GetProfileInfo()
         {
@@ -39,8 +42,41 @@ namespace instglooni.Repositories
                                user_name = some_user.user_name,
                                full_name = some_user.full_name,
                                avatar = some_user.avatar,
+                               commentsCount = 0,
+                               likesCount = 0
                            };
-            return profiles.ToList();
+            var comments = (from i in database.Table<Comment>() select i).ToList();
+            var likes = (from i in database.Table<Like>() select i).ToList();
+            List<ProfileInfo> profilesWithComments = new List<ProfileInfo>();
+            foreach (ProfileInfo profile in profiles)
+            {
+                foreach (Comment comm in comments)
+                {
+                    if (comm.post_code == profile.post_code)
+                    {
+                        profile.commentsCount = profile.commentsCount + 1;
+                    }
+                }
+                foreach (Like some_like in likes)
+                {
+                    if (some_like.post_code == profile.post_code)
+                    {
+                        profile.likesCount = profile.likesCount + 1;
+                    }
+                }
+                profilesWithComments.Add(new ProfileInfo {
+                    post_code = profile.post_code,
+                    date_post = profile.date_post,
+                    description = profile.description,
+                    user_id = profile.user_id,
+                    user_name = profile.user_name,
+                    full_name = profile.full_name,
+                    avatar = profile.avatar,
+                    commentsCount = profile.commentsCount,
+                    likesCount = profile.likesCount
+                });
+            }
+            return profilesWithComments;
         }
     }
 }
