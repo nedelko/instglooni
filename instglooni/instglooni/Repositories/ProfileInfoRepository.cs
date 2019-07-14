@@ -27,6 +27,7 @@ namespace instglooni.Repositories
             public string avatar { get; set; }
             public int commentsCount { get; set; }
             public int likesCount { get; set; }
+            public List<string> images { get; set; }
 
         }
         public List<ProfileInfo> GetProfileInfo()
@@ -43,10 +44,12 @@ namespace instglooni.Repositories
                                full_name = some_user.full_name,
                                avatar = some_user.avatar,
                                commentsCount = 0,
-                               likesCount = 0
+                               likesCount = 0,
+                               images = new List<string>()
                            };
             var comments = (from i in database.Table<Comment>() select i).ToList();
             var likes = (from i in database.Table<Like>() select i).ToList();
+            var img = (from i in database.Table<Instimage>() select i).ToList();
             List<ProfileInfo> profilesWithComments = new List<ProfileInfo>();
             foreach (ProfileInfo profile in profiles)
             {
@@ -64,6 +67,13 @@ namespace instglooni.Repositories
                         profile.likesCount = profile.likesCount + 1;
                     }
                 }
+                foreach (Instimage instimage in img)
+                {
+                    if (instimage.post_code == profile.post_code)
+                    {
+                        profile.images.Add(instimage.image_url);
+                    }
+                }
                 profilesWithComments.Add(new ProfileInfo {
                     post_code = profile.post_code,
                     date_post = profile.date_post,
@@ -73,7 +83,8 @@ namespace instglooni.Repositories
                     full_name = profile.full_name,
                     avatar = profile.avatar,
                     commentsCount = profile.commentsCount,
-                    likesCount = profile.likesCount
+                    likesCount = profile.likesCount,
+                    images = new List<string>(profile.images)
                 });
             }
             return profilesWithComments;
