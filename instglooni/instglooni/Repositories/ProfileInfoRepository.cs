@@ -71,7 +71,7 @@ namespace instglooni.Repositories
                 {
                     if (instimage.post_code == profile.post_code)
                     {
-                        profile.images.Add(instimage.image_url);
+                        profile.images.Add("img"+instimage.image_url);
                     }
                 }
                 profilesWithComments.Add(new ProfileInfo {

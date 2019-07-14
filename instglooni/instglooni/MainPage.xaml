@@ -19,7 +19,7 @@
         </StackLayout>
     </NavigationPage.TitleView>
     <StackLayout>
-        <ListView x:Name="profileInfoList" ItemsSource="{Binding}" RowHeight="300">
+        <ListView x:Name="profileInfoList" ItemsSource="{Binding}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

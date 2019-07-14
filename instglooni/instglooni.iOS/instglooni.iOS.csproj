@@ -153,4 +153,7 @@
       <Name>instglooni</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\avatar.png" />
+  </ItemGroup>
 </Project>
