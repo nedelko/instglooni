@@ -25,7 +25,6 @@
                     <ViewCell>
                         <ViewCell.View>
                             <StackLayout Orientation="Vertical">
-
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="2*" />
@@ -75,15 +74,15 @@
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="30" />
                                     </Grid.RowDefinitions>
                                     <Image Source="icon_like"
                                            Grid.Row="0"
                                            Grid.Column="0"
                                            HorizontalOptions="FillAndExpand"
                                            VerticalOptions="FillAndExpand"
-                                           WidthRequest="36"
-                                           HeightRequest="36">
+                                           WidthRequest="30"
+                                           HeightRequest="30">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_LikeTapped"/>
                                         </Image.GestureRecognizers>
@@ -93,8 +92,8 @@
                                            Grid.Column="1"
                                            HorizontalOptions="FillAndExpand"
                                            VerticalOptions="FillAndExpand"
-                                           WidthRequest="40"
-                                           HeightRequest="40">
+                                           WidthRequest="30"
+                                           HeightRequest="30">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_CommentsTapped"/>
                                         </Image.GestureRecognizers>
@@ -104,33 +103,44 @@
                                            Grid.Column="2"
                                            HorizontalOptions="FillAndExpand"
                                            VerticalOptions="FillAndExpand"
-                                           WidthRequest="40"
-                                           HeightRequest="40">
+                                           WidthRequest="30"
+                                           HeightRequest="30">
                                     </Image>
                                     <Image Source="icon_flag"
                                            Grid.Row="0"
                                            Grid.Column="4"
                                            HorizontalOptions="FillAndExpand"
                                            VerticalOptions="FillAndExpand"
-                                           WidthRequest="40"
-                                           HeightRequest="40">
+                                           WidthRequest="30"
+                                           HeightRequest="30">
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_FlagTapped" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                 </Grid>
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" Padding="5">
                                     <Label Text="Нравится: " FontSize="Small"/>
                                     <Label Text="{Binding likesCount}" FontSize="Small"/>
                                 </StackLayout>
-                                <Label Text="{Binding description}" FontSize="Medium" />
-                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                <StackLayout Padding="5">
+                                    <Label Text="{Binding description}" FontSize="Medium"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="0" Padding="5">
                                     <Label Text="Посмотреть все коментарии: (" FontSize="Small"/>
                                     <Label Text="{Binding commentsCount}" FontSize="Small"/>
                                     <Label Text=")" FontSize="Small"/>
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_CommentsTapped"/>
                                     </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <Image Source="{Binding avatar}"
+                                           HorizontalOptions="Fill"
+                                           VerticalOptions="Fill"
+                                           WidthRequest="20"
+                                           HeightRequest="20">
+                                    </Image>
+                                    <Entry FontSize="Medium" Placeholder="Комментировать" HorizontalOptions="FillAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell.View>
